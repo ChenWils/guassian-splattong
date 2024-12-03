@@ -29,8 +29,9 @@ except:
 
 
 def render_set(model_path, name, iteration, views, gaussians, pipeline, background, train_test_exp, separate_sh):
-    render_path = os.path.join(model_path, name, "ours_{}".format(iteration), "renders")
-    gts_path = os.path.join(model_path, name, "ours_{}".format(iteration), "gt")
+    render_path = name
+    # render_path = os.path.join(model_path, name, "ours_{}".format(iteration), "renders")
+    # gts_path = os.path.join(model_path, name, "ours_{}".format(iteration), "gt")
 
     makedirs(render_path, exist_ok=True)
     # makedirs(gts_path, exist_ok=True)
@@ -73,7 +74,7 @@ if __name__ == "__main__":
     parser.add_argument("--quiet", action="store_true")
     args = get_combined_args(parser)
     print("Rendering " + args.model_path)
-    name = sys.args[2]
+    name = sys.argv[2]
 
     # Initialize system state (RNG)
     safe_state(args.quiet)
