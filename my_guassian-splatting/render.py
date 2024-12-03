@@ -61,7 +61,7 @@ def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParam
 
         # if not skip_test:
         #      render_set(dataset.model_path, "test", scene.loaded_iter, scene.getTestCameras(), gaussians, pipeline, background, dataset.train_test_exp, separate_sh)
-        render_set(dataset.model_path, "test", scene.loaded_iter, scene.getTestCameras(), gaussians, pipeline, background, dataset.train_test_exp, separate_sh)
+        render_set(dataset.model_path, name, scene.loaded_iter, scene.getTrainCameras(), gaussians, pipeline, background, dataset.train_test_exp, separate_sh)
             
 if __name__ == "__main__":
     # Set up command line argument parser
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     parser.add_argument("--quiet", action="store_true")
     args = get_combined_args(parser)
     print("Rendering " + args.model_path)
-    # name = sys.argv[2]
+    name = sys.argv[2]
 
     # Initialize system state (RNG)
     safe_state(args.quiet)
